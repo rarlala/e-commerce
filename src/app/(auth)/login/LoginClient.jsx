@@ -11,6 +11,7 @@ import AutoSignInCheckbox from "@/components/autoSignInCheckbox/AutoSignInCheckb
 import Button from "@/components/button/Button";
 import Divider from "@/components/divider/Divider";
 import styles from "./Auth.module.scss";
+import Link from "next/link";
 
 const LoginClient = () => {
   const [email, setEmail] = useState("");
@@ -70,11 +71,18 @@ const LoginClient = () => {
               />
             </div>
             <div className={styles.buttonGroup}>
-              <Button />
+              <Button type="submit" width="100%">
+                로그인
+              </Button>
               <Divider />
-              <Button />
+              <Button width="100%" secondary>
+                <Link href={"/register"}>회원가입</Link>
+              </Button>
             </div>
-            <div></div>
+            <Divider />
+            <div>
+              <Button onClick={signInWithGoogle}>구글 로그인</Button>
+            </div>
           </form>
         </div>
       </section>
