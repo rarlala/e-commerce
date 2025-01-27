@@ -8,6 +8,8 @@ import LogoImg from "@/assets/colorful.svg";
 import Input from "@/components/input/Input";
 import Loader from "@/components/loader/Loader";
 import AutoSignInCheckbox from "@/components/autoSignInCheckbox/AutoSignInCheckbox";
+import Button from "@/components/button/Button";
+import Divider from "@/components/divider/Divider";
 import styles from "./Auth.module.scss";
 
 const LoginClient = () => {
@@ -67,7 +69,11 @@ const LoginClient = () => {
                 onChange={(e) => setIsAutoLogin(e.target.checked)}
               />
             </div>
-            <div className={styles.buttonGroup}></div>
+            <div className={styles.buttonGroup}>
+              <Button />
+              <Divider />
+              <Button />
+            </div>
             <div></div>
           </form>
         </div>
