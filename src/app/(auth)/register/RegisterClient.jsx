@@ -4,12 +4,15 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import Input from "@/components/input/Input";
 import Loader from "@/components/loader/Loader";
 import Divider from "@/components/divider/Divider";
 import Button from "@/components/button/Button";
 import LogoImg from "@/assets/colorful.svg";
+import { auth } from "@/firebase/firebase";
 import styles from "../login/Auth.module.scss";
 
 const RegisterClient = () => {
@@ -22,7 +25,22 @@ const RegisterClient = () => {
 
   const registerUser = (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      return toast.error("비밀번호가 일치하지 않습니다.");
+    }
     setIsLoading(true);
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setIsLoading(false);
+        toast.success("등록 성공");
+        router.push("/login");
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        toast.error(error.message);
+      });
   };
 
   return (
