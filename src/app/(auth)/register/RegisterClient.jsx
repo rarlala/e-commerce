@@ -78,7 +78,6 @@ const RegisterClient = () => {
                 <Link href={"/login"}>로그인</Link>
               </Button>
             </div>
-            <Divider />
           </form>
         </div>
       </section>

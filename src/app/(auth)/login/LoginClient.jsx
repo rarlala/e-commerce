@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 import LogoImg from "@/assets/colorful.svg";
 import Input from "@/components/input/Input";
@@ -11,7 +12,6 @@ import AutoSignInCheckbox from "@/components/autoSignInCheckbox/AutoSignInCheckb
 import Button from "@/components/button/Button";
 import Divider from "@/components/divider/Divider";
 import styles from "./Auth.module.scss";
-import Link from "next/link";
 
 const LoginClient = () => {
   const [email, setEmail] = useState("");
@@ -69,6 +69,23 @@ const LoginClient = () => {
                 checked={isAutoLogin}
                 onChange={(e) => setIsAutoLogin(e.target.checked)}
               />
+              <Link href={"/reset"} className={styles.findLink}>
+                비밀번호 수정하기
+                <svg
+                  width="11"
+                  height="18"
+                  viewBox="0 0 11 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={styles.findLinkArrow}
+                >
+                  <path
+                    d="M1.5 1L9.5 9L1.5 17"
+                    stroke="#0074E9"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </Link>
             </div>
             <div className={styles.buttonGroup}>
               <Button type="submit" width="100%">
