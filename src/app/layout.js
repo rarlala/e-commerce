@@ -1,4 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
+
+import Providers from "@/redux/provider";
 import ToastProvider from "@/components/toastProvider/ToastProvider";
 import Header from "@/layouts/header/Header";
 import Footer from "@/layouts/footer/Footer";
@@ -23,10 +25,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header />
-        <ToastProvider />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          <ToastProvider />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
